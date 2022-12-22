@@ -33,7 +33,7 @@ public class Customer implements Serializable {
     }
     
     
-    
+    //default constuctor
     public Customer() {
 		
 	}
