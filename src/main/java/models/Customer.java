@@ -32,7 +32,15 @@ public class Customer implements Serializable {
         this.email = email;
     }
     
-    public Integer getId() {
+    
+    
+    public Customer() {
+		
+	}
+
+
+
+	public Integer getId() {
         return id;
     }
 
