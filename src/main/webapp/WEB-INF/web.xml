@@ -4,13 +4,72 @@
         <servlet-name>CustomerController</servlet-name>
         <servlet-class>controllers.CustomerController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewCustomerController</servlet-name>
+        <servlet-class>controllers.NewCustomerController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteCustomer</servlet-name>
+        <servlet-class>controllers.DeleteCustomer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderController</servlet-name>
+        <servlet-class>controllers.OrderController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomersOrders</servlet-name>
+        <servlet-class>controllers.CustomersOrders</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CustomerController</servlet-name>
         <url-pattern>/Customers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewCustomerController</servlet-name>
+        <url-pattern>/NewCustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCustomer</servlet-name>
+        <url-pattern>/DeleteCustomer</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ProductController</servlet-name>
+        <servlet-class>controllers.ProductController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewProductController</servlet-name>
+        <servlet-class>controllers.NewProductController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteProduct</servlet-name>
+        <servlet-class>controllers.DeleteProduct</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductController</servlet-name>
+        <url-pattern>/Products</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewProductController</servlet-name>
+        <url-pattern>/NewProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteProduct</servlet-name>
+        <url-pattern>/DeleteProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderController</servlet-name>
+        <url-pattern>/Orders</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomersOrders</servlet-name>
+        <url-pattern>/CustomersOrders</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>index2.html</welcome-file>
+    </welcome-file-list>
 </web-app>

@@ -4,7 +4,9 @@
  */
 package controllers;
 
+import dto.CustomerOrderedProducts;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,10 +18,8 @@ import services.CustomerService;
  *
  * @author George.Pasparakis
  */
-public class CustomerController extends HttpServlet {
-    
+public class CustomersOrders extends HttpServlet {
     private CustomerService customerService = new CustomerService();
-
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -32,10 +32,10 @@ public class CustomerController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            System.out.println(request.getRequestURI());
-            request.setAttribute("customers", customerService.findAll());
-            RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/customerslist.jsp");
-            rd.forward(request, response);
+        List<CustomerOrderedProducts> customersOrders = customerService.customersOrders();
+        request.setAttribute("customersOrders", customersOrders);
+        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/customersorders.jsp");
+        rd.forward(request, response);
     }
 
     /**
@@ -49,7 +49,6 @@ public class CustomerController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
     }
 
     /**

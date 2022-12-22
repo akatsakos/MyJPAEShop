@@ -10,16 +10,19 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import services.CustomerService;
+import models.Product;
+import services.ProductService;
 
 /**
  *
  * @author George.Pasparakis
  */
-public class CustomerController extends HttpServlet {
-    
-    private CustomerService customerService = new CustomerService();
+public class NewProductController extends HttpServlet {
+    private final ProductService productService;
 
+    public NewProductController() {
+        this.productService = new ProductService();
+    }
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -32,10 +35,8 @@ public class CustomerController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            System.out.println(request.getRequestURI());
-            request.setAttribute("customers", customerService.findAll());
-            RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/customerslist.jsp");
-            rd.forward(request, response);
+        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/createproduct.jsp");
+        rd.forward(request, response);
     }
 
     /**
@@ -49,7 +50,16 @@ public class CustomerController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        request.setCharacterEncoding("UTF-8");
+        String name = request.getParameter("name").toString();
+        String description = request.getParameter("description").toString();
+        Long price = Long.parseLong(request.getParameter("price"));
+        Product p = productService.create(name, description, price);
+        if(p == null) {
+            response.sendRedirect("NewProduct");
+        } else {
+            response.sendRedirect("Products");
+        }
     }
 
     /**

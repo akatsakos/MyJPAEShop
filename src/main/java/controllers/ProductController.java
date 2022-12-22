@@ -10,16 +10,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import services.CustomerService;
+import services.ProductService;
 
 /**
  *
  * @author George.Pasparakis
  */
-public class CustomerController extends HttpServlet {
+public class ProductController extends HttpServlet {
+    private ProductService productService = new ProductService();
     
-    private CustomerService customerService = new CustomerService();
-
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -32,9 +31,9 @@ public class CustomerController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            System.out.println(request.getRequestURI());
-            request.setAttribute("customers", customerService.findAll());
-            RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/customerslist.jsp");
+        System.out.println(request.getRequestURI());
+            request.setAttribute("products", productService.findAll());
+            RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/productslist.jsp");
             rd.forward(request, response);
     }
 
